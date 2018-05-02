@@ -1,0 +1,16 @@
+
+nav.navbar.navbar-expand-lg.navbar-dark
+    .container
+            a.navbar-brand(href='/') WikiLatic
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNavDropdown.navbar-collapse.collapse
+                ul.navbar-nav.mr-auto
+                ul.navbar-nav
+                    if !currentUser
+                        li.nav-item
+                            a.nav-link(href="login") Login
+                        li.nav-item
+                            a.nav-link(href="register") Register
+                    else
+                        a.nav-link(href="logout") Logout
