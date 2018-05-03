@@ -17,7 +17,7 @@ var RevisionSchema = new mongoose.Schema({
     // }
 });
 
-RevisionSchema.statics.bulkUpdateUser = function(path,role){
+RevisionSchema.statics.setUserRole = function(path,role){
     var botReader = readLine.createInterface({
         input: fs.createReadStream(path)
     });
@@ -67,9 +67,23 @@ RevisionSchema.statics.setTheLorODate = function (title, acd, callback){
 
 // Set anonymous user role
 RevisionSchema.statics.setAnnoUserRole = function(){
+    var query = {'anon':{"$exists":true}};
+    var role = 'anon';
+    bulkRoleUpdate(query, role);
+}
+
+
+// Set regular user's role
+RevisionSchema.statics.setRglUserRole = function(){
+    var query = {'role':{"$exists":false}};
+    var role = 'rgl';
+    bulkRoleUpdate(query, role);
+}
+
+function bulkRoleUpdate(query, role){
 
     let bulk = Revision.collection.initializeUnorderedBulkOp();
-    bulk.find({'anon':{"$exists":true}}).update({$set:{'role':"anon"}}, function (err, docs) {
+    bulk.find(query).update({$set:{'role':role}}, function (err, docs) {
         if(err){
             console.log(err);
         }else {
@@ -80,13 +94,27 @@ RevisionSchema.statics.setAnnoUserRole = function(){
         if(err){
             console.log('revision bulk update fail!');
         }else {
-            console.log('1');
+            //console.log('1');
         }
     });
 }
 
+RevisionSchema.statics.updateAllDateToISODate = function update(){
+    Revision.find().cursor()
+        .on('data', function(doc){
+            Revision.findOneAndUpdate({_id:doc.id}, {$set:{timestamp:new Date(doc.timestamp)}},(err, res)=>{
+                if(err) console.log(err);
+                //else console.log(res);
+            });
+        })
+        .on('error', function(err){
+            // handle error
+        })
+        .on('end', function(){
+            console.log("Finish all date updating!");
+        });
 
-
+}
 
 var Revision = mongoose.model("Revision", RevisionSchema);
 

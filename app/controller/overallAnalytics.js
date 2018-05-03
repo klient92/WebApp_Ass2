@@ -15,7 +15,7 @@ function rankByRvsNumber(acd, topN){
     });
 }
 
-function rankByGroupOfRsdUser(acd, topN){
+function rankByGroupOfRgsdUser(acd, topN){
     Revision.aggregate([
     {$match:{user:{'$not':/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/}}},
     {$group: {_id:{title:"$title", user:"$user"}}},
@@ -28,5 +28,14 @@ function rankByGroupOfRsdUser(acd, topN){
 
 }
 
-module.exports.rankByGroupOfRsdUser = rankByGroupOfRsdUser;
+function distributionByYandU(){
+    Revision.aggregate([
+        {$project:{year:{$year:"$timestamp"}}}]).then(res=>{
+        console.log(res);
+        });
+
+}
+
+module.exports.distributionByYandU = distributionByYandU;
+module.exports.rankByGroupOfRgsdUser = rankByGroupOfRgsdUser;
 module.exports.rankByRvsNumber = rankByRvsNumber;

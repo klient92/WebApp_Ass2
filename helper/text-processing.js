@@ -5,6 +5,7 @@ var Revision = require('../app/models/revision');
 var Title = require('../app/models/title');
 var https = require('https');
 
+var MongoClient = require('mongodb').MongoClient;
 
 
 // Get the latest Revision ID by timestamp
@@ -153,6 +154,7 @@ function getAllTitles(callback) {
                 var title_arr = [];
                 for (var i=0; i<files.length;i++){
                     var newName = files[i].replace('.json','');
+                    if(newName!='.DS_Store')
                     title_arr.push(newName);
                 }
                 return callback(title_arr);
@@ -170,7 +172,7 @@ function writeTitleDateToDB(){
     for(let i = 0; i<title_arr.length;i++){
         let title = title_arr[i];
         let time_arr = [];
-        getTheLorODate(title,-1, (lDate)=>{
+        getTheLorODate(title, -1, (lDate)=>{
             time_arr.push(lDate);
             getTheLorODate(title, 1, (oDate)=>{
                 time_arr.push(oDate)
@@ -202,6 +204,8 @@ function getTheLorODate(title, acd, callback){
         return callback(res[0].timestamp);
     });
 }
+
+
 
 function writeEditorsToDB(bot_filePath, admin_filePath) {
 

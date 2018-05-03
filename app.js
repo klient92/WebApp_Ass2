@@ -25,13 +25,18 @@ conn.on('open', function () {
     Revision.setAnnoUserRole();
     if(config.firstLoad == '0'){
         console.log('first time');
+        // Set config.json
         config.firstLoad = '1';
         fs.writeFileSync('./config.json', JSON.stringify(config));
-        Revision.bulkUpdateUser('./public/data/Bot.txt','bot');
-        Revision.bulkUpdateUser('./public/data/Admin.txt','admin');
-
+        // Set revision user's role
+        Revision.setUserRole('./public/data/Bot.txt','bot');
+        Revision.setUserRole('./public/data/Admin.txt','admin');
+        Revision.setAnnoUserRole();
+        Revision.setRglUserRole();
+        // Update all date to ISO Date
+        Revision.updateAllDateToISODate();
+        // Write every title's date info to Mongodb
         helper.writeTitleDateToDB();
-
         conn.db.listCollections({name: 'editors'})
             .next(function(err, collinfo) {
                 if (!collinfo) {
@@ -42,9 +47,10 @@ conn.on('open', function () {
     }
 });
 
-//overall.rankByRvsNumber(-1,5);
-//overall.rankByGroupOfRsdUser(-1,5);
 
+//overall.rankByRvsNumber(-1,5);
+//overall.rankByGroupOfRgsdUser(-1,5);
+//overall.distributionByYandU();
 
 // use express-session for tracking logins
 app.use(session({
