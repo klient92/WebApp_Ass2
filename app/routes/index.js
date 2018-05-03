@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var userController = require('../controller/userInfoController');
+var userController = require('../controller/userInfo');
 var User = require('../models/user.js');
 var mid = require('../../middleware/index');
 

@@ -2,6 +2,7 @@ var fs = require('fs');
 var readLine = require('readline');
 var Editor = require('../app/models/editor');
 var Revision = require('../app/models/revision');
+var Title = require('../app/models/title');
 var https = require('https');
 
 
@@ -161,6 +162,46 @@ function getAllTitles(callback) {
 
 }
 
+// Write title date to db
+function writeTitleDateToDB(){
+
+    getAllTitles(title_arr=>{
+
+    for(let i = 0; i<title_arr.length;i++){
+        let title = title_arr[i];
+        let time_arr = [];
+        getTheLorODate(title,-1, (lDate)=>{
+            time_arr.push(lDate);
+            getTheLorODate(title, 1, (oDate)=>{
+                time_arr.push(oDate)
+                let latestDate = time_arr[0];
+                let oldestDate = time_arr[1];
+
+                var oneDay = 24*60*60*1000;
+                var diffDays = Math.round(Math.abs((latestDate - oldestDate)/(oneDay)));
+                var options = { upsert: true, new: true, setDefaultsOnInsert: true };
+                Title.findOneAndUpdate({title:title},
+                {lifeSpan: diffDays, latestDate: latestDate, oldestDate: oldestDate},
+                options,
+                (err, result)=>{
+
+                });
+            });
+        });
+    }
+    });
+
+}
+
+
+function getTheLorODate(title, acd, callback){
+    Revision.find({title:title}).
+    sort({timestamp:acd}).
+    select('title timestamp').
+    limit(1).exec((err, res) => {
+        return callback(res[0].timestamp);
+    });
+}
 
 function writeEditorsToDB(bot_filePath, admin_filePath) {
 
@@ -213,7 +254,7 @@ function writeEditorsToDB(bot_filePath, admin_filePath) {
 }
 
 
-
+module.exports.writeTitleDateToDB = writeTitleDateToDB;
 module.exports.promiseSave = promiseSave;
 module.exports.getOldRvIDByTitle = getOldRvIDByTitle;
 module.exports.getNewestData = getNewestData;
