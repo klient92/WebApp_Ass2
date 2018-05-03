@@ -3,10 +3,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var helper = require('./helper/text-processing');
+var overall = require('./app/controller/overallAnalytics');
+var fs = require('fs');
 var app = express();
 var Revision = require('./app/models/revision');
 var Editor = require('./app/models/editor');
+var helper = require('./helper/text-processing');
+
 
 // mongodb connection
 var mongoDB = 'mongodb://localhost:27017/wikilatic';
@@ -18,24 +21,31 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 
 // Check Editors exist and write
 conn.on('open', function () {
-    //helper.addRoleToData('./public/data/Bot.txt');
-    Revision.bulkUpdateUser('./public/data/Bot.txt','bot');
-    conn.db.listCollections({name: 'editors'})
-        .next(function(err, collinfo) {
-            if (!collinfo) {
-                Editor.writeEditorsToDB('./public/data/Bot.txt','bot');
-                //helper.writeEditorsToDB('./public/data/Bot.txt', './public/data/Admin.txt');
-            }
-        });
+    var config = require('./config.json');
+    Revision.setAnnoUserRole();
+    if(config.firstLoad == '0'){
+        console.log('first time');
+        config.firstLoad = '1';
+        fs.writeFileSync('./config.json', JSON.stringify(config));
+        Revision.bulkUpdateUser('./public/data/Bot.txt','bot');
+        Revision.bulkUpdateUser('./public/data/Admin.txt','admin');
+
+        helper.writeTitleDateToDB();
+
+        conn.db.listCollections({name: 'editors'})
+            .next(function(err, collinfo) {
+                if (!collinfo) {
+                    Editor.writeEditorsToDB('./public/data/Bot.txt','bot');
+                    Editor.writeEditorsToDB('./public/data/Admin.txt','admin');
+                }
+            });
+    }
 });
 
-// Join
-//helper.joinEditorAndRevisions()
+//overall.rankByRvsNumber(-1,5);
+//overall.rankByGroupOfRsdUser(-1,5);
 
-//
-//helper.getNewestData();
 
-// helper.test();
 // use express-session for tracking logins
 app.use(session({
   secret: 'charlezheng',
