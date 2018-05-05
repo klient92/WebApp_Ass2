@@ -1,1 +1,1 @@
-ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json; done
+ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json --upsertFields role:"1"; done
