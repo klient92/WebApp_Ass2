@@ -57,8 +57,8 @@ conn.on('open', function () {
 // Revision.individualDstbByYandU("Germany");
 // Revision.IndividualDstbByUser("Germany");
 //Revision.getTopNUserbyRevision("Australia",-1,5);
-Revision.articlesChangedByUser("TSO1D");
-Revision.getTimestampsOfRevisionUnderUser("Germany", "TSO1D");
+// Revision.articlesChangedByUser("TSO1D");
+// Revision.getTimestampsOfRevisionUnderUser("Germany", "TSO1D");
 
 
 // use express-session for tracking logins
