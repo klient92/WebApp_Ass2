@@ -8,26 +8,6 @@ var https = require('https');
 var MongoClient = require('mongodb').MongoClient;
 
 
-// Get the latest Revision ID by timestamp
-function getOldRvIDByTitle(title, callback){
-
-        Revision.aggregate(
-            [
-                {$match:{title:title}},
-                {$sort:{timestamp:-1}},
-                {$limit:1}
-
-            ],
-            function(err, records){
-                if(err){
-
-                }else {
-                    return callback(records[0]['revid']);
-
-                }
-            }
-        )
-}
 
 
 function bulkUpdate() {
@@ -77,72 +57,6 @@ function promiseSave(){
 }
 
 
-//Get the latest data set and save
-function getNewestData(callback) {
-
-    getAllTitles(function (titles) {
-        for (var i = 0; i < titles.length; i++) {
-            let titleName = titles[i];
-            getOldRvIDByTitle(titleName, function (revid) {
-            console.log(revid);
-                var title = titleName.replace(/ /g, "_");
-                var content = 'ids|user|timestamp|userid';
-                var rvid = revid;
-                var url_latest = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles=' + title + '&rvprop=' + content + '&format=json';
-                var url_from = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles=' + title + '&rvprop=' + content + '&rvendid=' + rvid + '&rvlimit=500&format=json';
-                //console.log(title);
-                fetchData(url_from, titleName, function (datajson) {
-                    if (datajson.length != 1) {
-                        Revision.insertMany(datajson, function (err, doc) {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                console.log(datajson[0]['title']);
-                                console.log(datajson.length);
-                            }
-                        });
-                    } else {
-                        console.log(datajson[0]['title']);
-                        console.log(datajson.length);
-                    }
-                });
-            });
-        }
-
-    });
-}
-
-
-
-
-// Make http request to WikiAPI
-function fetchData(url, title, callback){
-
-    https.get(url, (resp) => {
-        let data = '';
-
-        // A chunk of data has been recieved.
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            var datajson = JSON.parse(data);
-            datajson = datajson['query']['pages'];
-            datajson = datajson[Object.keys(datajson)[0]];
-            datajson = datajson['revisions'];
-            for(var i = 0; i<datajson.length; i++){
-                datajson[i]['title'] = title;
-            }
-            return callback(datajson);
-        });
-
-    }).on("error", (err) => {
-        console.log("Error: " + err.message);
-    });
-
-}
 
 // Get All titles from folder
 function getAllTitles(callback) {
@@ -260,8 +174,6 @@ function writeEditorsToDB(bot_filePath, admin_filePath) {
 
 module.exports.writeTitleDateToDB = writeTitleDateToDB;
 module.exports.promiseSave = promiseSave;
-module.exports.getOldRvIDByTitle = getOldRvIDByTitle;
-module.exports.getNewestData = getNewestData;
 module.exports.bulkUpdate = bulkUpdate;
 module.exports.writeEditorsToDB = writeEditorsToDB;
 //module.exports.joinEditorAndRevisions = joinEditorAndRevisions;

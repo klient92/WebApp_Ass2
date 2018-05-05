@@ -28,14 +28,27 @@ function rankByGroupOfRgsdUser(acd, topN){
 
 }
 
-function distributionByYandU(){
+function overallDstbByYandU(){
     Revision.aggregate([
-        {$project:{year:{$year:"$timestamp"}}}]).then(res=>{
+        {$project:{year:{$year:"$timestamp"},role:1}},
+        {$group:{_id:{year:"$year", role:"$role"},total:{$sum:1}}},
+        {$sort:{total:1}},
+        ]).then(res=>{
         console.log(res);
         });
 
 }
 
-module.exports.distributionByYandU = distributionByYandU;
+function distributionByUser(){
+    Revision.aggregate([
+
+        {$group:{_id:"$role", total:{$sum:1}}}]).
+        then((res)=>{
+            console.log(res);
+        });
+}
+
+module.exports.distributionByUser = distributionByUser;
+module.exports.overallDstbByYandU = overallDstbByYandU;
 module.exports.rankByGroupOfRgsdUser = rankByGroupOfRgsdUser;
 module.exports.rankByRvsNumber = rankByRvsNumber;

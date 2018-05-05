@@ -22,7 +22,6 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 // Check Editors exist and write
 conn.on('open', function () {
     var config = require('./config.json');
-    Revision.setAnnoUserRole();
     if(config.firstLoad == '0'){
         console.log('first time');
         // Set config.json
@@ -50,7 +49,17 @@ conn.on('open', function () {
 
 //overall.rankByRvsNumber(-1,5);
 //overall.rankByGroupOfRgsdUser(-1,5);
-//overall.distributionByYandU();
+// Revision.updateLatestDataFromWikiAPI("Germany", (length, docs)=>{
+//     // console.log(length);
+//     // console.log(docs);
+// });
+// overall.overallDstbByYandU();
+// Revision.individualDstbByYandU("Germany");
+// Revision.IndividualDstbByUser("Germany");
+//Revision.getTopNUserbyRevision("Australia",-1,5);
+Revision.articlesChangedByUser("TSO1D");
+Revision.getTimestampsOfRevisionUnderUser("Germany", "TSO1D");
+
 
 // use express-session for tracking logins
 app.use(session({
