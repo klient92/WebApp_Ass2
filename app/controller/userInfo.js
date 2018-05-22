@@ -5,6 +5,11 @@ var mid = require('../../middleware/index');
 
 // Get // Index
 module.exports.toIndex = function(req, res, next) {
+    if (req.session && req.session.userId){
+        return res.render('overall', { title: 'Overall Analytics' });
+    }else {
+        return res.render('index', { title: 'Home' });
+    }
     if (req.session.isVisit) {
         req.session.isVisit ++;
         //console.log('-----------'+ '\n' + res + '-----------');
@@ -12,7 +17,7 @@ module.exports.toIndex = function(req, res, next) {
         req.session.isVisit = 1;
 
     }
-    return res.render('index', { title: 'Home' });
+
 }
 
 
@@ -44,15 +49,15 @@ module.exports.logout = function(req, res, next){
 
 // Post // Login
 module.exports.login = function(req, res, next) {
-    if(req.body.username && req.body.password){
-        User.authenticate(req.body.username, req.body.password, function(error, user){
+    if(req.body.email && req.body.password){
+        User.authenticate(req.body.email, req.body.password, function(error, user){
             if (error || !user){
                 var err = new Error('Wrong email or password');
                 err.status = 401;
                 return err;
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/profile');
+                return res.redirect('/overall');
             }
         });
     }else{

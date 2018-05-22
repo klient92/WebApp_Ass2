@@ -1,1 +1,54 @@
-ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json --upsertFields role:"1"; done
+ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json; done
+
+db.revisions.find("timestamp":{$lt:2004})
+
+db.revisions.find({"timestamp" : { $lt : new ISODate("2004-01-01T20:15:31Z"),
+$gt : new ISODate("2003-01-01T20:15:31Z")}})
+db.revisions.find({title:"Australia",role:{"$exists":false}})
+
+db.revisions.aggregate([
+   {$project:{year:{$year:"$timestamp"}, user:1}},
+   {$match:{year:{$lt:2004, $gte:2003}}},
+   {
+     $lookup:
+       {
+         from: "editors",
+         localField: "user",
+         foreignField: "name",
+         as: "container"
+       }
+  }, 
+  {
+      $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$container", 0 ] }, "$$ROOT" ] } }
+   },
+   { $project: { container: 0 } },
+   {$match:{role:"bot"}}
+],{cursor:{}})
+
+db.revisions.aggregate([
+   {$project:{year:{$year:"$timestamp"}, user:1}},
+   {
+     $lookup:
+       {
+         from: "editors",
+         localField: "user",
+         foreignField: "name",
+         as: "container"
+       }
+  }, 
+  {
+      $replaceRoot: { newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$container", 0 ] }, "$$ROOT" ] } }
+   },
+   { $project: { container: 0 } },
+   {$match:{role:"bot"}}
+],{cursor:{}})
+
+
+db.revisions.aggregate([
+        {$match:{title:"Germany"}},
+        {$project:{year:{$year:"$timestamp"},user:1}},
+        {$group:{_id:{user:"$user", year:"$year"}, total:{$sum:1}}},
+        {$addFields:{_id:"$_id.user", year:"$_id.year"}},
+        {$group:{_id:"$_id", arr:{$push:"$$ROOT"},total:{$sum:"$total"}}},
+        {$sort:{total:-1}},
+        {$limit:5}],{cursor:{}})

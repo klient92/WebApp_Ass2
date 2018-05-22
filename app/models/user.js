@@ -33,8 +33,8 @@ var UserSchema = new mongoose.Schema({
 });
 
 // authenticate input against database document
-UserSchema.statics.authenticate = function(username, password, callback){
-  User.findOne({username: username})
+UserSchema.statics.authenticate = function(email, password, callback){
+  User.findOne({email: email})
   .exec(function(error, user){
     if (error){
       return callback(error);

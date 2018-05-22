@@ -8,6 +8,7 @@ var fs = require('fs');
 var app = express();
 var Revision = require('./app/models/revision');
 var Editor = require('./app/models/editor');
+var Title = require('./app/models/title');
 var helper = require('./helper/text-processing');
 
 
@@ -46,7 +47,10 @@ conn.on('open', function () {
     }
 });
 
-
+Title.rankByHistroy(-1,3);
+// Revision.rankByGroupOfRgsdUser(-1,3,function (res) {
+//     console.log("");
+// });
 //overall.rankByRvsNumber(-1,5);
 //overall.rankByGroupOfRgsdUser(-1,5);
 // Revision.updateLatestDataFromWikiAPI("Germany", (length, docs)=>{

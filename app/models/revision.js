@@ -43,6 +43,36 @@ RevisionSchema.statics.setUserRole = function(path,role){
 
 // ------------------------------------- Overall ----------------------------------------
 
+RevisionSchema.statics.rankByRvsNumber = function(acd, topN, callback){
+
+    Revision.aggregate([
+        {
+            $group: {_id:"$title" , "total":{$sum:1}}
+        },
+        {$sort:{total:acd}},
+        {$limit:topN}]).then(res=>{
+        return callback(res);
+
+    });
+}
+
+// The article edited by largest/smallest group of registered users.
+RevisionSchema.statics.rankByGroupOfRgsdUser = function (acd, topN, callback){
+    Revision.aggregate([
+        {$match:{user:{'$not':/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/}}},
+        {$group: {_id:{title:"$title", user:"$user"}}},
+        {$group:{_id:"$_id.title", total:{$sum:1}}},
+        {$sort:{total:acd}},
+        {$limit:topN}])
+        .then(res=>{
+        console.log(res);
+            return callback(res);
+        });
+
+}
+
+
+
 // Set the latest Date and oldest date
 RevisionSchema.statics.setTheLorODate = function (title, acd, callback){
 

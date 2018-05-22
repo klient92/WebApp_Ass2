@@ -1,0 +1,99 @@
+extends layout
+
+block scripts
+    script(src='/js/overall.js')
+    link(rel='stylesheet', href='/stylesheets/overall.css')
+
+
+block content
+    //- var results = JSON.parse(result)
+    .main.container.text-center
+        .container.col-8.border.border-warning
+            h2.my-4 Top N Titles with Revisions Analytics
+            .form-group.row
+                label.col-2.col-form-label(for='topn-revision-input') Top N
+                .col-10
+                    input#topn-revision-input.form-control(type='number', value='3')
+
+
+
+            table.table.table-dark
+                caption#topn-high-revision-caption.text-warning Top 3 Titles with highest revisions
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col') Title
+                        th(scope='col') Number of revisions
+                tbody#topn-high-revision
+
+
+
+
+            table.table.table-dark
+                caption#topn-low-revision-caption.text-warning Top 3 Titles with lowest revisions
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col') Title
+                        th(scope='col') Number of revisions
+                tbody#topn-low-revision
+
+
+
+        .container.col-8.mt-4.border.border-warning
+            h2.my-4 Titles edited by Group Analytics
+            //.form-group.row
+            //    label.col-2.col-form-label(for='topn-group-input') Top N
+            //    .col-10
+            //        input#topn-group-input.form-control(type='number', value='3')
+
+
+
+            table.table.table-dark
+                caption#topn-high-group-caption.text-warning The Title with highest groups
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col') Title
+                        th(scope='col') Number of groups
+                tbody#topn-high-group
+
+
+
+
+            table.table.table-dark
+                caption#topn-low-group-caption.text-warning The Title with smallest groups
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col').text-left Title
+                        th(scope='col').text-left Number of groups
+                tbody#topn-low-group
+
+
+        .container.col-8.border.border-warning.mt-4
+            h2.my-4 Top 3 Titles with History Analytics
+
+
+
+            table.table.table-dark
+                caption#topn-high-history-caption.text-warning Top 3 Titles with longest history
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col') Title
+                        th(scope='col') Duration of history
+                tbody#topn-high-history
+
+
+
+
+            table.table.table-dark
+                caption#topn-low-history-caption.text-warning Top 3 Titles with shortest history
+                thead
+                    tr
+                        th(scope='col') #
+                        th(scope='col') Title
+                        th(scope='col') Duration of history
+                tbody#topn-low-history
+

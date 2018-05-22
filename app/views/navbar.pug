@@ -5,7 +5,16 @@ nav.navbar.navbar-expand-lg.navbar-dark
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavDropdown', aria-controls='navbarNavDropdown', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarNavDropdown.navbar-collapse.collapse
-                ul.navbar-nav.mr-auto
+                ul.navbar-nav.mx-auto
+                    if currentUser
+                        li.overall.nav-item
+                            a.nav-link(href='overall')
+                                | Overall
+                                span.sr-only (current)
+                        li.individual.nav-item
+                            a.nav-link(href='individual') Individual
+                        li.author.nav-item
+                            a.nav-link(href='author') Author
                 ul.navbar-nav
                     if !currentUser
                         li.nav-item
