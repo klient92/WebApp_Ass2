@@ -1,0 +1,84 @@
+#titleInput {
+
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#titleTableDiv{
+    height:100px;
+    scroll:auto;
+}
+
+
+
+#titleTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+
+}
+
+
+#titleTable th, #titleTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+}
+#titleTableBody td {
+    color:black;
+}
+
+#titleTableBody tr:hover > td {
+    color:black;
+}
+#titleTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+}
+
+#titleTableBody tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+}
+
+
+.table-wrapper-2 {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+
+#timestampTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+
+}
+
+
+#timestampTable th, #timestampTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+}
+#timestampTableBody td {
+    color:black;
+}
+
+#timestampTableBody tr:hover > td {
+    color:black;
+}
+#timestampTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+}
+
+#timestampTableBody tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+}

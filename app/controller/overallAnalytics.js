@@ -19,33 +19,25 @@ module.exports.rankByGroupOfRgsdUser = function(req, res, next){
 }
 
 module.exports.rankByHistory = function(req, res, next){
-    Title.rankByHistroy(parseInt(req.query.acd), parseInt(req.query.topn), function (result) {
+    Revision.rankByTimeSpan(parseInt(req.query.acd), parseInt(req.query.topn), function (result) {
         return res.send({result: result});
     });
 
 }
 
-
-
-function overallDstbByYandU(){
-    Revision.aggregate([
-        {$project:{year:{$year:"$timestamp"},role:1}},
-        {$group:{_id:{year:"$year", role:"$role"},total:{$sum:1}}},
-        {$sort:{total:1}},
-        ]).then(res=>{
-        console.log(res);
-        });
-
+module.exports.overallDstbByYandU = function (req, res, next) {
+    Revision.overallDstbByYandU(function (result) {
+        return res.send({result: result});
+    });
 }
 
-function distributionByUser(){
-    Revision.aggregate([
 
-        {$group:{_id:"$role", total:{$sum:1}}}]).
-        then((res)=>{
-            console.log(res);
-        });
+
+module.exports.distributionByUser = function (req, res, next) {
+    Revision.distributionByUser(function (result) {
+        return res.send({result: result});
+    });
 }
 
-module.exports.distributionByUser = distributionByUser;
-module.exports.overallDstbByYandU = overallDstbByYandU;
+
+

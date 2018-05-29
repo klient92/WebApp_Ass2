@@ -26,7 +26,7 @@ EditorSchema.statics.writeEditorsToDB = function(path, role){
             if (error){
 
             } else {
-
+                //console.log("write "+ path +" finished");
             }
         });
     });

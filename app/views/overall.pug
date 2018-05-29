@@ -77,23 +77,28 @@ block content
 
 
             table.table.table-dark
-                caption#topn-high-history-caption.text-warning Top 3 Titles with longest history
+                caption#topn-longest-history-caption.text-warning Top 3 Titles with longest history
                 thead
                     tr
                         th(scope='col') #
                         th(scope='col') Title
                         th(scope='col') Duration of history
-                tbody#topn-high-history
+                tbody#topn-longest-history
 
 
 
 
             table.table.table-dark
-                caption#topn-low-history-caption.text-warning Top 3 Titles with shortest history
+                caption#topn-shortest-history-caption.text-warning Top 3 Titles with shortest history
                 thead
                     tr
                         th(scope='col') #
                         th(scope='col') Title
                         th(scope='col') Duration of history
-                tbody#topn-low-history
+                tbody#topn-shortest-history
 
+        .container.col-8.mt-4.border.border-warning
+            canvas#overBarChart(width='400', height='400')
+
+        .container.col-8.mt-4.border.border-warning
+            canvas#overPieChart(width='400', height='400')

@@ -85,39 +85,49 @@ function writeTitleDateToDB(){
 
     for(let i = 0; i<title_arr.length;i++){
         let title = title_arr[i];
-        let time_arr = [];
-        getTheLorODate(title, -1, (lDate)=>{
-            time_arr.push(lDate);
-            getTheLorODate(title, 1, (oDate)=>{
-                time_arr.push(oDate)
-                let latestDate = time_arr[0];
-                let oldestDate = time_arr[1];
 
-                var oneDay = 24*60*60*1000;
-                var diffDays = Math.round(Math.abs((latestDate - oldestDate)/(oneDay)));
-                var options = { upsert: true, new: true, setDefaultsOnInsert: true };
-                Title.findOneAndUpdate({title:title},
-                {lifeSpan: diffDays, latestDate: latestDate, oldestDate: oldestDate},
-                options,
-                (err, result)=>{
+        Revision.getRevisionNumberByTitle(title, (revisions) =>{
 
-                });
+            var options = { upsert: true, new: true, setDefaultsOnInsert: true };
+            Title.findOneAndUpdate({title:title},
+            {revisions: revisions},
+            options,
+            (err, result)=>{
+
             });
         });
+    //     getTheLorODate(title, -1, (lDate)=>{
+    //         time_arr.push(lDate);
+    //         getTheLorODate(title, 1, (oDate)=>{
+    //             time_arr.push(oDate)
+                //let latestDate = time_arr[0];
+                //let oldestDate = time_arr[1];
+
+                //var oneDay = 24*60*60*1000;
+                //var diffDays = Math.round(Math.abs((latestDate - oldestDate)/(oneDay)));
+                //var options = { upsert: true, new: true, setDefaultsOnInsert: true };
+                // Title.findOneAndUpdate({title:title},
+                // {lifeSpan: diffDays, latestDate: latestDate, oldestDate: oldestDate},
+                // options,
+                // (err, result)=>{
+                //
+                // });
+    //         });
+    //     });
     }
     });
 
 }
 
 
-function getTheLorODate(title, acd, callback){
-    Revision.find({title:title}).
-    sort({timestamp:acd}).
-    select('title timestamp').
-    limit(1).exec((err, res) => {
-        return callback(res[0].timestamp);
-    });
-}
+// function getTheLorODate(title, acd, callback){
+//     Revision.find({title:title}).
+//     sort({timestamp:acd}).
+//     select('title timestamp').
+//     limit(1).exec((err, res) => {
+//         return callback(res[0].timestamp);
+//     });
+// }
 
 
 

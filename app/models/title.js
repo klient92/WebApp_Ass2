@@ -4,7 +4,7 @@ var readLine = require('readline');
 
 var TitleSchema = new mongoose.Schema({
     title: String,
-    latestDate: Date,
+    revisions: Number,
     oldestDate: Date,
     lifeSpan: Number
 });
@@ -16,8 +16,17 @@ TitleSchema.statics.rankByHistroy = function(acd, topN, callback){
         {$sort:{lifeSpan:acd}},
         {$limit:topN}
     ]).then(res=>{
-        console.log(res);
+        //console.log(res);
+        return callback(res);
     });
+}
+
+// Get All Titles and Revisions number
+TitleSchema.statics.getAllTitleAndRevisionsNumber = function(callback){
+    Title.find({},(err,result)=>{
+
+    return callback(result);
+    })
 }
 
 var Title = mongoose.model('Title', TitleSchema);

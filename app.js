@@ -29,14 +29,14 @@ conn.on('open', function () {
         config.firstLoad = '1';
         fs.writeFileSync('./config.json', JSON.stringify(config));
         // Set revision user's role
-        Revision.setUserRole('./public/data/Bot.txt','bot');
-        Revision.setUserRole('./public/data/Admin.txt','admin');
+        //Revision.setUserRole('./public/data/Bot.txt','bot');
+        //Revision.setUserRole('./public/data/Admin.txt','admin');
         Revision.setAnnoUserRole();
         Revision.setRglUserRole();
         // Update all date to ISO Date
-        Revision.updateAllDateToISODate();
+        //Revision.updateAllDateToISODate();
         // Write every title's date info to Mongodb
-        helper.writeTitleDateToDB();
+        //helper.writeTitleDateToDB();
         conn.db.listCollections({name: 'editors'})
             .next(function(err, collinfo) {
                 if (!collinfo) {
@@ -47,7 +47,9 @@ conn.on('open', function () {
     }
 });
 
-Title.rankByHistroy(-1,3);
+
+// Revision.rankByTimeSpan(-1,3,res=>{
+// });
 // Revision.rankByGroupOfRgsdUser(-1,3,function (res) {
 //     console.log("");
 // });
