@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     $("#searchBtn").on('click', function (e) {
         var author = $(".authorInput").val();
-        console.log(author);
+        $("#titleTableBody").empty();
         $.get( "http://localhost:3000/author/articles_by_author",{author:author}, function( data ) {
             data = data.result;
             console.log(data);
