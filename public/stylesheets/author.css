@@ -14,7 +14,7 @@
 
 
 
-#titleTable {
+.titleTable {
     border-collapse: collapse; /* Collapse borders */
     width: 100%; /* Full-width */
     border: 1px solid #ddd; /* Add a grey border */
@@ -23,23 +23,23 @@
 }
 
 
-#titleTable th, #titleTable td {
+.titleTable th, .titleTable td {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
 }
-#titleTableBody td {
+.titleTableBody td {
     color:black;
 }
 
-#titleTableBody tr:hover > td {
+.titleTableBody tr:hover > td {
     color:black;
 }
-#titleTable tr {
+.titleTable tr {
     /* Add a bottom border to all table rows */
     border-bottom: 1px solid #ddd;
 }
 
-#titleTableBody tr:hover {
+.titleTableBody tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
 }
@@ -53,7 +53,7 @@
 }
 
 
-#timestampTable {
+.timestampTable {
     border-collapse: collapse; /* Collapse borders */
     width: 100%; /* Full-width */
     border: 1px solid #ddd; /* Add a grey border */
@@ -62,23 +62,23 @@
 }
 
 
-#timestampTable th, #timestampTable td {
+.timestampTable th, .timestampTable td {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
 }
-#timestampTableBody td {
+.timestampTableBody td {
     color:black;
 }
 
-#timestampTableBody tr:hover > td {
+.timestampTableBody tr:hover > td {
     color:black;
 }
-#timestampTable tr {
+.timestampTable tr {
     /* Add a bottom border to all table rows */
     border-bottom: 1px solid #ddd;
 }
 
-#timestampTableBody tr:hover {
+.timestampTableBody tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
 }

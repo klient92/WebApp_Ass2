@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.overall').addClass('active');
+    $('#overPieChart').css("display","none");
 });
 
 $(document).ready(function() {
@@ -10,7 +11,22 @@ $(document).ready(function() {
 
 });
 
+$(document).ready(function() {
+    //set initial state.
+    $('#switchBtn').val($(this).is(':checked'));
 
+    $('#switchBtn').change(function() {
+        if($(this).is(":checked")) {
+            $('#overBarChart').css("display","block");
+            $('#overPieChart').css("display","none");
+           console.log("aa");
+        }else {
+            $('#overBarChart').css("display","none");
+            $('#overPieChart').css("display","block");
+        }
+        $('#switchBtn').val($(this).is(':checked'));
+    });
+});
 
 $(document).ready(function(){
     addChart();
@@ -90,7 +106,13 @@ function addBar(){
                             return label + ": "+total + " " + "(" + Math.round(total/total_users*1000)/10+"%)";
                         }
                     }
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'Revision number distribution by user type',
+                    fontSize: 20,
+                    fontColor: "white"
+                },
             }
         });
 
@@ -164,7 +186,13 @@ function addChart(){
                             beginAtZero:true
                         }
                     }]
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'Revision number distribution by year and by user type',
+                    fontSize: 20,
+                    fontColor: "white"
+                },
             }
         });
         $("#overallBarChart").append(myChart);

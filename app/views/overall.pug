@@ -97,8 +97,16 @@ block content
                         th(scope='col') Duration of history
                 tbody#topn-shortest-history
 
-        .container.col-8.mt-4.border.border-warning
-            canvas#overBarChart(width='400', height='400')
 
         .container.col-8.mt-4.border.border-warning
+
+            .checkbox.mt-4.ml-4
+                label
+                    input#switchBtn(type='checkbox', checked='', data-toggle='toggle', data-on='By Year and User Type', data-off='By User Type', data-onstyle='success', data-offstyle='info')
+
+
+
+            canvas#overBarChart(width='400', height='400')
             canvas#overPieChart(width='400', height='400')
+
+

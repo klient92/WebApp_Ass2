@@ -9,64 +9,86 @@ $(document).ready(function () {
 
     $("#searchBtn").on('click', function (e) {
         var author = $(".authorInput").val();
-        $("#titleTableBody").empty();
+        $("#dataTableBody").empty();
         $.get( "http://localhost:3000/author/articles_by_author",{author:author}, function( data ) {
             data = data.result;
-            console.log(data);
+
             for(var i=0;i<data.length;i++){
                 var title = data[i]._id;
                 var revisions = data[i].total;
-                insertDataToTitleTable(title, revisions);
+                insertDataToCollapseTableBody(title, revisions);
+                //insertDataToTitleTable(title, revisions);
             }
+
 
         });
 
     });
 });
 
-$(document).ready(function(){
-    $("#titleTable").delegate('tr', 'click', function() {
-        $("#timestampTableBody").empty();
-        var author = $(".authorInput").val();
 
-        var title = $(this).find(">:first-child").text();
-        //var revisions = $(this).find(">:nth-child(2)").text();
-        console.log(title);
-        $.get( "http://localhost:3000/author/revision_timestamp_by_author_and_article",{author: author, title: title}, function( data ) {
-            data = data.result;
+$(document).on("click",".accordion-toggle", function () {
 
-            // data["oldRevisions"] = parseInt(revisions);
-            // data["newRevisions"] = parseInt(revisions) + parseInt(data.number);
-            //
-            // display(data,"#articleDiv");
-            console.log(data);
-            for(let i=0;i<data.length;i++){
-                var timestamp = data[i].timestamp;
-                insertDataToTimestampTable(timestamp);
-            }
+    let author = $(".authorInput").val();
+    let clickedItemName = $(this).find(">:first-child").text();
+    let id = "#" + clickedItemName.replace(" ","") + "TimestampTableBody";
+    $(id).empty();
+    $.get( "http://localhost:3000/author/revision_timestamp_by_author_and_article",{author: author, title: clickedItemName}, function( data ) {
+        data = data.result;
+        for(let i=0;i<data.length;i++){
+            var timestamp = data[i].timestamp;
+            insertDataToTimestampTable(id, timestamp);
+        }
 
-        });
     });
 });
 
-function insertDataToTimestampTable(timestamp) {
+
+function insertDataToCollapseTableBody(title, revisions){
+
+    let id = title.replace(" ","");
+    let userInfoRow = $('<tr></tr>').attr("data-toggle","collapse")
+        .attr("data-target","#"+id).addClass("accordion-toggle");
+
+    let userRowData = $('<td></td>').text(title);
+    let RevisionRowData = $('<td></td>').text(revisions);
+
+    let hiddenRow = $('<tr></tr>');
+    let hiddenRowData = $('<td></td>').addClass('hiddenRow').attr("colspan","6");
+    let ttDiv = $('<div></div>').addClass('accordian-body collapse').attr("id",id);
+    let tableDiv = $('<div></div>').addClass('table-wrapper-2');
+    let ttTable = $('<table></table>').attr('id', id + 'TimestampTable').addClass('timestampTable');
+    let tableHeader = $('<thead></thead>');
+    let headerRow = $('<tr></tr>').addClass('header bg-primary text-light');
+    let ttHeaderTitle = $('<th></th>').attr('style','width:40%').text('Timestamp');
+    let ttBody = $('<tbody></tbody>').attr('id',id +"TimestampTableBody").addClass('timestampTableBody');
+
+    let tableBody = $('#dataTableBody');
+    tableBody.append(userInfoRow);
+    userInfoRow.append(userRowData);
+    userInfoRow.append(RevisionRowData);
+
+    tableBody.append(hiddenRow);
+    hiddenRow.append(hiddenRowData);
+    hiddenRowData.append(ttDiv);
+    ttDiv.append(tableDiv);
+    tableDiv.append(ttTable);
+    ttTable.append(tableHeader);
+    tableHeader.append(headerRow);
+    headerRow.append(ttHeaderTitle);
+    ttTable.append(ttBody);
+
+
+}
+
+function insertDataToTimestampTable(id,timestamp) {
+
     var row = $('<tr></tr>');
     var td_title = $('<td></td>').text(timestamp);
     row.append(td_title);
-    $("#timestampTableBody").append(row);
+    $(id).append(row);
 }
 
-
-function insertDataToTitleTable(title, revisions){
-
-    var row = $('<tr></tr>');
-    var td_title = $('<td></td>').text(title);
-    var td_revisions = $('<td></td>').text(revisions);
-    row.append(td_title);
-    row.append(td_revisions);
-    $("#titleTableBody").append(row);
-
-}
 
 
 
