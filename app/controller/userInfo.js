@@ -54,7 +54,7 @@ module.exports.login = function(req, res, next) {
             if (error || !user){
                 var err = new Error('Wrong email or password');
                 err.status = 401;
-                return err;
+                return next(err);
             } else {
                 req.session.userId = user._id;
                 return res.redirect('/overall');

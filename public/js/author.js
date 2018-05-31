@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#articleDiv").css("display","none");
     $('.author').addClass('active');
-
+    $('.alertDiv').css("display","none");
 });
 
 
@@ -13,13 +13,17 @@ $(document).ready(function () {
         $.get( "http://localhost:3000/author/articles_by_author",{author:author}, function( data ) {
             data = data.result;
 
-            for(var i=0;i<data.length;i++){
-                var title = data[i]._id;
-                var revisions = data[i].total;
-                insertDataToCollapseTableBody(title, revisions);
-                //insertDataToTitleTable(title, revisions);
-            }
+            if (data.length == 0) {
 
+                $(".alertDiv").fadeIn();
+            }else {
+                $(".alertDiv").fadeOut()
+                for(var i=0;i<data.length;i++){
+                    var title = data[i]._id;
+                    var revisions = data[i].total;
+                    insertDataToCollapseTableBody(title, revisions);
+                }
+            }
 
         });
 

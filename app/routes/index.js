@@ -19,6 +19,7 @@ router.post('/login', userController.login);
 // ------------------------------ Overall Analytics ------------------------
 // Get /overall
 router.get('/overall', mid.requiredLogin, function(req, res, next){
+    console.log("aaaaaaaa");
     return res.render('overall', { title: 'Overall Anayltics'})
 });
 // Get /Titles of the three articles with highest number of revisions.
@@ -37,6 +38,10 @@ router.get('/overall/distribution_by_year_and_user', mid.requiredLogin, overallC
 
 // A pie chart of revision number distribution by user type across the whole data set.
 router.get('/overall/distribution_by_user', mid.requiredLogin, overallController.distributionByUser);
+
+// A pie chart of revision number distribution by user type across the whole data set.
+router.get('/overall/get_total_articles_number', mid.requiredLogin, overallController.getTotalArticleNumber);
+
 
 // ------------------------------ Individual Analytics ------------------------
 

@@ -1,15 +1,15 @@
+let total_articles = 0;
+
 $(document).ready(function () {
     $('.overall').addClass('active');
     $('#overPieChart').css("display","none");
-});
 
-$(document).ready(function() {
-
-    $("#overall-search1").click(function() {
-        alert( "Handler for .click() called." );
+    $.get( "http://localhost:3000/overall/get_total_articles_number", function(data) {
+        total_articles = data.result;
     });
-
 });
+
+
 
 $(document).ready(function() {
     //set initial state.
@@ -48,11 +48,26 @@ $(document).ready(function(){
 
 $(document).ready(function() {
 
-    $("#topn-revision-input").on("change paste keyup", function() {
+    $("#topn-revision-input").on("change", function() {
         empty_element("#topn-high-revision");
         empty_element("#topn-low-revision");
-        get_topn_titles_with_highest_revisions("#topn-high-revision", "-1", $(this).val());
-        get_topn_titles_with_highest_revisions("#topn-low-revision", "1", $(this).val());
+        let inputTopN =  $(this).val();
+        if (inputTopN>total_articles){
+            inputTopN = total_articles;
+
+        }
+        if(inputTopN<0){
+            $(this).val(1);
+            inputTopN = 1;
+        }
+
+        if(inputTopN==""){
+            $(this).val(3);
+            inputTopN = 3;
+
+        }
+        get_topn_titles_with_highest_revisions("#topn-high-revision", "-1", inputTopN);
+        get_topn_titles_with_highest_revisions("#topn-low-revision", "1", inputTopN);
     });
 
 });

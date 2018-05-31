@@ -4,6 +4,13 @@ var Revision = require('../models/revision');
 var Title = require("../models/title");
 
 
+module.exports.getTotalArticleNumber = function (req, res, next) {
+    Revision.getTotalArticleNumber(function (result) {
+        return res.send({result: result});
+    });
+}
+
+
 module.exports.getTLNArticleWithHighestRevision = function(req, res, next){
     Revision.rankByRvsNumber(parseInt(req.query.acd), parseInt(req.query.topn), function (result) {
         return res.send({result: result});

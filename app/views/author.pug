@@ -7,34 +7,15 @@ block scripts
 block content
     .main.container.text-center
         .col-md-8.mx-auto.text-center
+            .alert.alert-warning.alertDiv
+                strong Warning!
+                |  No user are matched.
+
             .input-group.mb-3
                 input.authorInput.form-control(type='text', placeholder="Author username", aria-label="Author username", aria-describedby='basic-addon2')
                 .input-group-append
                     button#searchBtn.btn.btn-outline-secondary(type='button') Search
 
-            //.card
-            //    .card-body
-            //        .table-wrapper-2
-            //            // Table
-            //            table#titleTable
-            //                thead
-            //                    tr.header.bg-primary.text-light
-            //                        th(style='width:60%;') Title
-            //                        th(style='width:40%;') Revisions
-            //                tbody#titleTableBody
-
-            //.card.my-5
-            //    .card-body
-            //        .table-wrapper-2
-            //            // Table
-            //            table#timestampTable
-            //                thead
-            //                    tr.header.bg-primary.text-light
-            //
-            //                        th(style='width:40%;') Timestamp
-            //                tbody#timestampTableBody
-
-            //#articleDiv.container.col-8.border.border-warning.my-4
 
             .card
                 table.table.table-condensed(style='border-collapse:collapse;')
@@ -44,33 +25,4 @@ block content
                             th Revisions
 
                     tbody#dataTableBody
-
-                        //tr.accordion-toggle(data-toggle='collapse', data-target='#demo1')
-                        //    td Credit Account
-                        //    td.text-success $150.00
-                        //tr
-                        //    td.hiddenRow(colspan='6')
-                        //        #demo1.accordian-body.collapse
-                        //
-                        //            .table-wrapper-2
-                        //                // Table
-                        //                table#timestampTable
-                        //                    thead
-                        //                        tr.header.bg-primary.text-light
-                        //
-                        //                            th(style='width:40%;') Timestamp
-                        //                    tbody#timestampTableBody
-
-                        //tr.accordion-toggle(data-toggle='collapse', data-target='#demo2')
-                        //    td 05 May 2013
-                        //    td.text-success $161.00
-                        //tr
-                        //    td.hiddenRow(colspan='6')
-                        //        #demo2.accordian-body.collapse Demo2
-                        //tr.accordion-toggle(data-toggle='collapse', data-target='#demo3')
-                        //    td 3
-                        //    td 05 May 2013
-                        //tr
-                        //    td.hiddenRow(colspan='6')
-                        //        #demo3.accordian-body.collapse Demo3
 
