@@ -8,12 +8,10 @@ function loggedOut(req, res, next){
 
 function requiredLogin(req, res, next){
   if (!req.session || !req.session.userId){
-    console.log('no user');
     var err = new Error('You must be logged in to view this page.');
     err.status = 401;
     return next(err);
   } else {
-    console.log('ok');
     return next();
   }
 }

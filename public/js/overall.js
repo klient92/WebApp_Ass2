@@ -19,7 +19,6 @@ $(document).ready(function() {
         if($(this).is(":checked")) {
             $('#overBarChart').css("display","block");
             $('#overPieChart').css("display","none");
-           console.log("aa");
         }else {
             $('#overBarChart').css("display","none");
             $('#overPieChart').css("display","block");
@@ -226,11 +225,9 @@ function get_topn_titles_with_highest_revisions(field_id, acd, topn){
     if(acd == -1){
         caption = 'Top ' + topn.toString() + ' Titles with highest revisions';
         $('#topn-high-revision-caption').text(caption);
-        console.log('high');
     }else {
         caption = 'Top ' + topn.toString() + ' Titles with lowest revisions';
         $('#topn-low-revision-caption').text(caption);
-        console.log('low');
     }
 
 
@@ -248,7 +245,6 @@ function get_topn_titles_with_highest_revisions(field_id, acd, topn){
             row.append(td_total);
 
             $(field_id).append(row);
-            //console.log(row);
         }
     });
 
@@ -270,7 +266,6 @@ function get_topn_titles_rank_by_group(field_id, acd, topn){
             row.append(td_total);
 
             $(field_id).append(row);
-            //console.log(row);
         }
     });
 
@@ -291,7 +286,6 @@ function get_topn_articles_with_longest_or_shortest_history(field_id, acd, topn)
             row.append(th);
             row.append(td_title);
             row.append(td_total);
-            //console.log(row);
             $(field_id).append(row);
 
         }

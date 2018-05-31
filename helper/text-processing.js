@@ -186,28 +186,3 @@ module.exports.writeTitleDateToDB = writeTitleDateToDB;
 module.exports.promiseSave = promiseSave;
 module.exports.bulkUpdate = bulkUpdate;
 module.exports.writeEditorsToDB = writeEditorsToDB;
-//module.exports.joinEditorAndRevisions = joinEditorAndRevisions;
-// function joinEditorAndRevisions(){
-//
-//     var MongoClient = require('mongodb').MongoClient;
-//     var url = "mongodb://localhost:27017/wikilatic";
-//
-//     MongoClient.connect(url, function(err, db) {
-//         if (err) throw err;
-//         var dbo = db.db("wikilatic");
-//         dbo.collection('revisions').aggregate([
-//             { $lookup:
-//                     {
-//                         from: 'editors',
-//                         localField: 'name',
-//                         foreignField: 'user',
-//                         as: 'userDetails'
-//                     }
-//             }
-//         ]).toArray(function(err, res) {
-//             if (err) throw err;
-//             console.log(JSON.stringify(res));
-//             db.close();
-//         });
-//     });
-// }

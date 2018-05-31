@@ -4,7 +4,15 @@
     <list default="true" id="b22911ca-f21f-4b1a-8a27-a1e0a5f1343f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/revision.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/revision.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/title.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/text-processing.js" beforeDir="false" afterPath="$PROJECT_DIR$/helper/text-processing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/individual.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/individual.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/overall.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/overall.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,8 +29,8 @@
       <file leaf-file-name="overall.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/overall.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
+            <state relative-caret-position="377">
+              <caret line="68" column="85" selection-start-line="68" selection-start-column="85" selection-end-line="68" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -39,8 +47,26 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
+            <state relative-caret-position="324">
+              <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="revision.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/revision.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="122" column="50" lean-forward="true" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="individual.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/individual.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3180">
+              <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -49,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/app/controller/userInfo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="325">
-              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -57,8 +83,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/middleware/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -85,23 +111,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fetchAndSaveRevisionData</find>
-      <find>get</find>
-      <find>get_topn_titles_rank_by_group</find>
-      <find>getRevisionNumberByTitlere</find>
-      <find>constructArticleTable</find>
-      <find>timestamp</find>
-      <find>data</find>
-      <find>addPieChart</find>
-      <find>getRevisionDstbByYearInTop5User</find>
-      <find>insertDataToTitleTable</find>
-      <find>bookworm</find>
       <find>titleTableBody</find>
       <find>consol</find>
       <find>insertDataToTimestampTable</find>
       <find>attr</find>
       <find>none</find>
-      <find>console.log</find>
       <find>search1</find>
       <find>change</find>
       <find>top n</find>
@@ -111,10 +125,22 @@
       <find>destroy</find>
       <find>aaaa</find>
       <find>top 3</find>
-      <find>console</find>
       <find>get_topn_titles_with_highest_revisions</find>
-      <find>session</find>
       <find>not found</find>
+      <find>console.log</find>
+      <find>console</find>
+      <find>).find(</find>
+      <find>.find</find>
+      <find>replace(/ /g, &quot;_&quot;);</find>
+      <find>replace</find>
+      <find>insertDataToTitleTable</find>
+      <find>display</find>
+      <find>bulk =</find>
+      <find>bulk</find>
+      <find>initializeUnorderedBulkOp</find>
+      <find>$set</find>
+      <find>revisionsnumber</find>
+      <find>session</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,8 +167,6 @@
         <option value="$PROJECT_DIR$/app/models/editor.js" />
         <option value="$PROJECT_DIR$/app/views/profile.pug" />
         <option value="$PROJECT_DIR$/app/controller/individualAnalytics.js" />
-        <option value="$PROJECT_DIR$/config.json" />
-        <option value="$PROJECT_DIR$/public/js/individual.js" />
         <option value="$PROJECT_DIR$/app/views/individual.pug" />
         <option value="$PROJECT_DIR$/app/controller/authorAnalytics.js" />
         <option value="$PROJECT_DIR$/app/views/about.pug" />
@@ -150,16 +174,18 @@
         <option value="$PROJECT_DIR$/app/views/layout.pug" />
         <option value="$PROJECT_DIR$/app/views/author.pug" />
         <option value="$PROJECT_DIR$/public/js/author.js" />
-        <option value="$PROJECT_DIR$/app/models/revision.js" />
         <option value="$PROJECT_DIR$/app/controller/overallAnalytics.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/login.css" />
         <option value="$PROJECT_DIR$/app/views/login.pug" />
         <option value="$PROJECT_DIR$/app/views/overall.pug" />
         <option value="$PROJECT_DIR$/app/routes/index.js" />
-        <option value="$PROJECT_DIR$/public/js/overall.js" />
         <option value="$PROJECT_DIR$/middleware/index.js" />
         <option value="$PROJECT_DIR$/app/controller/userInfo.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/js/overall.js" />
+        <option value="$PROJECT_DIR$/public/js/individual.js" />
+        <option value="$PROJECT_DIR$/app/models/revision.js" />
+        <option value="$PROJECT_DIR$/config.json" />
       </list>
     </option>
   </component>
@@ -214,6 +240,12 @@
               <item name="Ass2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ass2" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ass2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ass2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -230,6 +262,12 @@
               <item name="Ass2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ass2" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ass2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ass2" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -289,7 +327,7 @@
       <workItem from="1526540730292" duration="1118000" />
       <workItem from="1526876692210" duration="460000" />
       <workItem from="1526898973840" duration="6145000" />
-      <workItem from="1527398543196" duration="80553000" />
+      <workItem from="1527398543196" duration="88405000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1525224594037</created>
@@ -375,11 +413,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527755508096</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix session problem by set the config of session">
+      <created>1527757578527</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1527757578527</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213805000" />
+    <option name="totallyTimeSpent" value="221657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -394,15 +439,15 @@
     <frame x="65" y="59" width="1273" height="811" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22603834" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22603834" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5079208" side_tool="true" weight="0.3562044" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32913166" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32846716" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4920792" visible="true" weight="0.3277311" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4920792" visible="true" weight="0.3277311" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="7" />
@@ -434,7 +479,8 @@
     <MESSAGE value="input field boundary case added" />
     <MESSAGE value="fix the unchangeable caption bugs" />
     <MESSAGE value="fix the unchangeable caption bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the unchangeable caption bug" />
+    <MESSAGE value="fix session problem by set the config of session" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix session problem by set the config of session" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -610,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/individualAnalytics.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -669,13 +708,6 @@
     <entry file="file://$PROJECT_DIR$/public/stylesheets/overall.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/individual.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="219" selection-start-line="219" selection-end-line="224" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/profile.pug">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -701,13 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/revision.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -749,20 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/overall.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/userInfo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="745">
@@ -770,10 +781,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/middleware/index.js">
+    <entry file="file://$PROJECT_DIR$/app/controller/userInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="325">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -784,10 +795,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/overall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="68" column="85" selection-start-line="68" selection-start-column="85" selection-end-line="68" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/individual.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3180">
+          <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/revision.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="122" column="50" lean-forward="true" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
+        <state relative-caret-position="324">
+          <caret line="41" column="17" lean-forward="true" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
         </state>
       </provider>
     </entry>

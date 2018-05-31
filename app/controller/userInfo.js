@@ -12,7 +12,6 @@ module.exports.toIndex = function(req, res, next) {
     }
     if (req.session.isVisit) {
         req.session.isVisit ++;
-        //console.log('-----------'+ '\n' + res + '-----------');
     }else {
         req.session.isVisit = 1;
 
@@ -98,7 +97,6 @@ module.exports.register = function(req, res, next){
                 return next(error);
             } else {
                 req.session.userId = user._id;
-                console.log(user.username);
                 return res.redirect('/');
             }
         });

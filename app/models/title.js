@@ -16,7 +16,6 @@ TitleSchema.statics.rankByHistroy = function(acd, topN, callback){
         {$sort:{lifeSpan:acd}},
         {$limit:topN}
     ]).then(res=>{
-        //console.log(res);
         return callback(res);
     });
 }

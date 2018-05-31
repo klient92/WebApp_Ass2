@@ -126,6 +126,7 @@ RevisionSchema.statics.overallDstbByYandU = function(callback){
             var total = res[i].total;
             var temp_dict = data_dict[role];
             temp_dict[year] = total;
+
         }
         inform_dict["first_year"] = first_year;
         inform_dict["last_year"] = last_year;
@@ -266,24 +267,6 @@ RevisionSchema.statics.updateLatestDataFromWikiAPI = function(titleName, callbac
             return callback(inform);
         }
 
-
-        // , function (datajson) {
-        //     if (datajson.length != 1) {
-        //         Revision.insertMany(datajson, function (err, doc) {
-        //             if (err) {
-        //                 console.log(err)
-        //             } else {
-        //                 return callback(datajson.length, doc[0]);
-        //                 // console.log(datajson[0]['title']);
-        //                 // console.log(datajson.length);
-        //             }
-        //         });
-        //     } else {
-        //         return callback(datajson.length, doc[0]);
-        //         // console.log(datajson[0]['title']);
-        //         // console.log(datajson.length);
-        //     }
-        // });
     });
 
 }
@@ -330,25 +313,27 @@ function fetchAndSaveRevisionData(url, title, callback){
             datajson = datajson[Object.keys(datajson)[0]];
             datajson = datajson['revisions'];
 
-            // for(let i = 0; i<datajson.length; i++){
-            //     datajson[i]['title'] = title;
-            //     var user = datajson[i]['user'];
-            //     Editor.find({name:user},(err,res)=>{
-            //         if(res.length !=0 ) {
-            //             datajson[i]['role'] = res[0].role;
-            //         }
-            //         else if("anon" in datajson[i]){
-            //             datajson[i]['role'] = "anon";
-            //         }else {
-            //             datajson[i]['role'] = "rgl";
-            //         }
-                    // var query = {revid:datajson[i]['revid']},
-                    //     options = { upsert: true, new: true, setDefaultsOnInsert: true };
-                    // Revision.findOneAndUpdate(query, datajson[i], options, function(error, result) {
-                    //
-                    // });
-            //     })
-            // }
+            for(let i = 0; i<datajson.length; i++){
+                datajson[i]['title'] = title;
+                var user = datajson[i]['user'];
+                Editor.find({name:user},(err,res)=>{
+                    if(res.length !=0 ) {
+                        datajson[i]['role'] = res[0].role;
+                    }
+                    else if("anon" in datajson[i]){
+                        datajson[i]['role'] = "anon";
+                    }else {
+                        datajson[i]['role'] = "rgl";
+                    }
+                datajson[i]['timestamp'] = new Date(datajson[i]['timestamp']);
+            var query = {revid:datajson[i]['revid']},
+                options = { upsert: true, new: true, setDefaultsOnInsert: true };
+            Revision.findOneAndUpdate(query, datajson[i], options, function(error, result) {
+
+            });
+                })
+            }
+
             var inform = {};
             inform["status"] = "update";
             inform["title"] = title;

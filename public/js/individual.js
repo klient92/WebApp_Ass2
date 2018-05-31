@@ -10,7 +10,7 @@ $(document).ready(function () {
         for(var i=0;i<data.length;i++){
             var title = data[i]._id;
             var revisions = data[i].revisions;
-            insertDataToTitleTable(title, revisions);
+            insertDataToTitleTable(title, revisions, i);
         }
 
     });
@@ -21,12 +21,14 @@ $(document).ready(function(){
 
         var title = $(this).find(">:first-child").text();
         var revisions = $(this).find(">:nth-child(2)").text();
+        let revisions_id = $(this).find(">:nth-child(2)").attr('id');
+        console.log(revisions_id);
         $.get( "http://localhost:3000/individual/update_title_from_wiki",{title: title}, function( data ) {
             data = data.result;
             data["oldRevisions"] = parseInt(revisions);
             data["newRevisions"] = parseInt(revisions) + parseInt(data.number);
 
-            display(data,"#articleDiv");
+            display(data,"#articleDiv", revisions_id);
 
         });
     });
@@ -51,12 +53,12 @@ function constructArticleTable(field_id){
 
 }
 
-function display(data, field_id){
+function display(data, field_id, revisions_id){
 
     var articleDiv = $(field_id);
 
     articleDiv.css("display","block");
-
+    let titleRevisionsNumber = $("#"+revisions_id);
     var status = data.status;
     var title = data.title;
     var updateString= "";
@@ -67,6 +69,9 @@ function display(data, field_id){
 
     }else {
         var number = data.number;
+
+        titleRevisionsNumber.text((parseInt(titleRevisionsNumber.html()) + number).toString());
+
         var lastRevisionDate = data.last.timestamp;
         updateString = "Download " + number + " revision(s). The last revision date is : " + lastRevisionDate;
 
@@ -82,7 +87,7 @@ function display(data, field_id){
 
     $('#topAlert').text(updateString);
     $('#title').text(title);
-    $('#revisionsNumber').text(data["newRevisions"]);
+    $('#revisionsNumber').text(titleRevisionsNumber.text());
 
 }
 
@@ -90,8 +95,6 @@ function getRevisionsDstbByYearAndUserType(title){
 
     $.get( "http://localhost:3000/individual/revisions_distribution_by_year_user",{title: title}, function( data ) {
         var data = data.result;
-        console.log("first");
-        console.log(data);
         addBarChart(data);
     });
 
@@ -100,7 +103,6 @@ function getRevisionsDstbByYearAndUserType(title){
 function getRevisionDstbByUserType(title) {
     $.get( "http://localhost:3000/individual/revisions_distribution_by_user",{title: title}, function( data ) {
         var data = data.result;
-        console.log("second");
         addPieChart(data);
     });
 }
@@ -108,8 +110,6 @@ function getRevisionDstbByUserType(title) {
 function getRevisionDstbByYearInTop5User(title){
     $.get( "http://localhost:3000/individual/revisions_distribution_by_year_in_top5_user",{title: title}, function( data ) {
         var data = data.result;
-        console.log("third");
-        console.log(data);
         addThirdBarChart(data);
     });
 }
@@ -119,7 +119,6 @@ function getNewRevisonsNumber(field_id, title, acd, topn){
     $.get( "http://localhost:3000/individual/top_n_rgl_users_ranked_by_revisions",{title: title, acd:acd, topn:topn}, function( data ) {
 
         var data = data.result;
-        //console.log(data);
         for (var i =0 ;i<data.length;i++) {
             var title = data[i]._id.user;
             var total = data[i].total;
@@ -132,17 +131,16 @@ function getNewRevisonsNumber(field_id, title, acd, topn){
             row.append(td_total);
 
             $(field_id).append(row);
-            //console.log(row);
         }
 
     });
 }
 
-function insertDataToTitleTable(title, revisions){
-
+function insertDataToTitleTable(title, revisions, index){
+    let title_index = "title_" + index.toString();
     var row = $('<tr></tr>');
     var td_title = $('<td></td>').text(title);
-    var td_revisions = $('<td></td>').text(revisions);
+    var td_revisions = $('<td></td>').text(revisions).attr("id",title_index);
     row.append(td_title);
     row.append(td_revisions);
     $("#titleTableBody").append(row);
