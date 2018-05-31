@@ -494,7 +494,7 @@ RevisionSchema.statics.articlesChangedByUser = function (author, callback) {
         {$group:{_id:"$title", total:{$sum:1}}}
 
     ]).then(res=>{
-        console.log(res);
+        //console.log(res);
         return callback(res);
     });
 

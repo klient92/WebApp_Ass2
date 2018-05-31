@@ -35,7 +35,7 @@ $(document).on("click",".accordion-toggle", function () {
 
     let author = $(".authorInput").val();
     let clickedItemName = $(this).find(">:first-child").text();
-    let id = "#" + clickedItemName.replace(" ","") + "TimestampTableBody";
+    let id = "#" + clickedItemName.replace(/ /g, "-").replace(/\(|\)/g, "") + "TimestampTableBody";
     $(id).empty();
     $.get( "http://localhost:3000/author/revision_timestamp_by_author_and_article",{author: author, title: clickedItemName}, function( data ) {
         data = data.result;
@@ -50,7 +50,7 @@ $(document).on("click",".accordion-toggle", function () {
 
 function insertDataToCollapseTableBody(title, revisions){
 
-    let id = title.replace(" ","");
+    let id = title.replace(/ /g, "-").replace(/\(|\)/g, "");
     let userInfoRow = $('<tr></tr>').attr("data-toggle","collapse")
         .attr("data-target","#"+id).addClass("accordion-toggle");
 
