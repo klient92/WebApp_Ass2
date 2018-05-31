@@ -222,6 +222,17 @@ function empty_element(element_id){
 }
 
 function get_topn_titles_with_highest_revisions(field_id, acd, topn){
+    var caption = "";
+    if(acd == -1){
+        caption = 'Top ' + topn.toString() + ' Titles with highest revisions';
+        $('#topn-high-revision-caption').text(caption);
+        console.log('high');
+    }else {
+        caption = 'Top ' + topn.toString() + ' Titles with lowest revisions';
+        $('#topn-low-revision-caption').text(caption);
+        console.log('low');
+    }
+
 
     $.get( "http://localhost:3000/overall/tln-articles-with-highest-number-of-revisions", {acd:acd, topn:topn}, function( data ) {
         var data = data.result;

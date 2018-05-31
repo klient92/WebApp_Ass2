@@ -19,7 +19,6 @@ router.post('/login', userController.login);
 // ------------------------------ Overall Analytics ------------------------
 // Get /overall
 router.get('/overall', mid.requiredLogin, function(req, res, next){
-    console.log("aaaaaaaa");
     return res.render('overall', { title: 'Overall Anayltics'})
 });
 // Get /Titles of the three articles with highest number of revisions.
