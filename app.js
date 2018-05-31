@@ -3,13 +3,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var overall = require('./app/controller/overallAnalytics');
 var fs = require('fs');
 var app = express();
 var Revision = require('./app/models/revision');
 var Editor = require('./app/models/editor');
-var Title = require('./app/models/title');
-var helper = require('./helper/text-processing');
 
 
 // mongodb connection
@@ -48,29 +45,10 @@ conn.on('open', function () {
 });
 
 
-// Revision.rankByTimeSpan(-1,3,res=>{
-// });
-// Revision.rankByGroupOfRgsdUser(-1,3,function (res) {
-//     console.log("");
-// });
-//overall.rankByRvsNumber(-1,5);
-//overall.rankByGroupOfRgsdUser(-1,5);
-// Revision.updateLatestDataFromWikiAPI("Germany", (length, docs)=>{
-//     // console.log(length);
-//     // console.log(docs);
-// });
-// overall.overallDstbByYandU();
-// Revision.individualDstbByYandU("Germany");
-// Revision.IndividualDstbByUser("Germany");
-//Revision.getTopNUserbyRevision("Australia",-1,5);
-// Revision.articlesChangedByUser("TSO1D");
-// Revision.getTimestampsOfRevisionUnderUser("Germany", "TSO1D");
-
-
 // use express-session for tracking logins
 app.use(session({
   secret: 'charlezheng',
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: conn
@@ -78,6 +56,7 @@ app.use(session({
 }));
 
 app.use(function(req, res, next){
+  console.log(req.session.userId);
   res.locals.currentUser = req.session.userId;
   next();
 });
@@ -99,7 +78,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('File Not Found');
+  var err = new Error("Page doesn't exist");
   err.status = 404;
   next(err);
 });
