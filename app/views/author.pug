@@ -16,13 +16,23 @@ block content
                 .input-group-append
                     button#searchBtn.btn.btn-outline-secondary(type='button') Search
 
-
             .card
-                table.table.table-condensed(style='border-collapse:collapse;')
-                    thead
-                        tr
-                            th Title
-                            th Revisions
+                .card-body
+                    .table-wrapper-2
+                        // Table
+                        table.titleTable
+                            thead
+                                tr.header.bg-primary.text-light
+                                    th(style='width:80%;') Author
+                            tbody#authorTableBody.authorTable
 
-                    tbody#dataTableBody
+            .card.my-4
+                .table-wrapper-2
+                    table.table.table-condensed(style='border-collapse:collapse;')
+                        thead
+                            tr
+                                th Title
+                                th Revisions
+
+                        tbody#dataTableBody
 

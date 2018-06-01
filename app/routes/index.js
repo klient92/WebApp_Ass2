@@ -64,6 +64,11 @@ router.get('/individual/revisions_distribution_by_user', mid.requiredLogin, indi
 router.get('/individual/revisions_distribution_by_year_in_top5_user', mid.requiredLogin, individualController.rvsnMadeByTop5ByY);
 
 // ------------------------------------ Author ----------------------------------
+
+// Find users
+router.get('/author/find_users', mid.requiredLogin, authorController.getUsersByName);
+
+
 // All user and his revisions number
 router.get('/author/author_revisions', mid.requiredLogin, authorController.getUserAndHisRevisions);
 
@@ -72,6 +77,7 @@ router.get('/author/articles_by_author', mid.requiredLogin, authorController.art
 
 // Get all revisions by article
 router.get('/author/revision_timestamp_by_author_and_article', mid.requiredLogin, authorController.getTimestampsOfRevisionUnderUser);
+
 
 
 // ------------------------------------ User ----------------------------------

@@ -51,8 +51,10 @@ $(document).ready(function() {
         empty_element("#topn-high-revision");
         empty_element("#topn-low-revision");
         let inputTopN =  $(this).val();
+
         if (inputTopN>total_articles){
             inputTopN = total_articles;
+            $(this).val(total_articles);
 
         }
         if(inputTopN<0){
@@ -63,7 +65,6 @@ $(document).ready(function() {
         if(inputTopN==""){
             $(this).val(3);
             inputTopN = 3;
-
         }
         get_topn_titles_with_highest_revisions("#topn-high-revision", "-1", inputTopN);
         get_topn_titles_with_highest_revisions("#topn-low-revision", "1", inputTopN);

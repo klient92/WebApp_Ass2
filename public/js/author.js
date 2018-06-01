@@ -1,3 +1,7 @@
+
+let search_author_name = "";
+
+
 $(document).ready(function () {
     $("#articleDiv").css("display","none");
     $('.author').addClass('active');
@@ -8,27 +12,53 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $("#searchBtn").on('click', function (e) {
+        var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
         var author = $(".authorInput").val();
+        $('#authorTableBody').empty();
         $("#dataTableBody").empty();
-        $.get( "http://localhost:3000/author/articles_by_author",{author:author}, function( data ) {
-            data = data.result;
 
-            if (data.length == 0) {
+        if(format.test(author) || !author){
+            $(".alertDiv").html("<strong>Warning!</strong> Special characters are not allowed");
+            $(".alertDiv").fadeIn();
 
-                $(".alertDiv").fadeIn();
-            }else {
-                $(".alertDiv").fadeOut()
-                for(var i=0;i<data.length;i++){
-                    var title = data[i]._id;
-                    var revisions = data[i].total;
-                    insertDataToCollapseTableBody(title, revisions);
+        }else {
+            $(".alertDiv").fadeOut();
+
+            $.get( "http://localhost:3000/author/find_users",{author:author}, function( data ) {
+                data = data.result;
+                for(let i=0;i<data.length;i++){
+                    let authorName = data[i]._id;
+                    insertDataToAuthorTable(authorName, i);
                 }
-            }
+                console.log(data.length);
+            });
+        }
+    });
+});
 
-        });
+$(document).on('click' ,'.authorRow',function(){
+    let name = $(this).text();
+    search_author_name = name;
+    $("#dataTableBody").empty();
+    $.get( "http://localhost:3000/author/articles_by_author",{author:name}, function( data ) {
+        data = data.result;
+
+        if (data.length == 0) {
+
+            $(".alertDiv").fadeIn();
+        }else {
+            $(".alertDiv").fadeOut()
+            for(var i=0;i<data.length;i++){
+                var title = data[i]._id;
+                var revisions = data[i].total;
+                insertDataToCollapseTableBody(title, revisions);
+            }
+        }
 
     });
 });
+
+
 
 
 $(document).on("click",".accordion-toggle", function () {
@@ -37,7 +67,7 @@ $(document).on("click",".accordion-toggle", function () {
     let clickedItemName = $(this).find(">:first-child").text();
     let id = "#" + clickedItemName.replace(/ /g, "-").replace(/\(|\)/g, "") + "TimestampTableBody";
     $(id).empty();
-    $.get( "http://localhost:3000/author/revision_timestamp_by_author_and_article",{author: author, title: clickedItemName}, function( data ) {
+    $.get( "http://localhost:3000/author/revision_timestamp_by_author_and_article",{author: search_author_name, title: clickedItemName}, function( data ) {
         data = data.result;
         for(let i=0;i<data.length;i++){
             var timestamp = data[i].timestamp;
@@ -115,4 +145,13 @@ function searchFunction() {
             }
         }
     }
+}
+
+function insertDataToAuthorTable(authorName, index){
+    let title_index = "author_" + index.toString();
+    var row = $('<tr></tr>').addClass('authorRow');
+    var td_author = $('<td></td>').text(authorName).attr("id",title_index);
+    row.append(td_author);
+    $("#authorTableBody").append(row);
+
 }

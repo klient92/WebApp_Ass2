@@ -234,12 +234,22 @@ RevisionSchema.statics.updateAllDateToISODate = function update(){
 //     // return count;
 // }
 
+// Get Related users by name
+RevisionSchema.statics.getUsersByName = function(author, callback){
+    let regex = new RegExp('.*(' + author +').*','i');
+    console.log(regex);
+    Revision.aggregate([{$match:{"user":regex}},{$group:{_id:"$user"}}])
+        .then(res=>{
+            return callback(res);
+        });
+};
+
 RevisionSchema.statics.getAllTitlesAndRevisions = function(callback){
     Revision.aggregate([{$group:{_id:"$title", revisions:{$sum:1}}}])
         .then(res=>{
             return callback(res);
         });
-}
+};
 
 // Fetch the latest data from Wiki API
 RevisionSchema.statics.updateLatestDataFromWikiAPI = function(titleName, callback){
