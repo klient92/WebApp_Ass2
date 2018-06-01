@@ -237,7 +237,6 @@ RevisionSchema.statics.updateAllDateToISODate = function update(){
 // Get Related users by name
 RevisionSchema.statics.getUsersByName = function(author, callback){
     let regex = new RegExp('.*(' + author +').*','i');
-    console.log(regex);
     Revision.aggregate([{$match:{"user":regex}},{$group:{_id:"$user"}}])
         .then(res=>{
             return callback(res);

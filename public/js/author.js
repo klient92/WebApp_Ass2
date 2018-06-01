@@ -26,11 +26,16 @@ $(document).ready(function () {
 
             $.get( "http://localhost:3000/author/find_users",{author:author}, function( data ) {
                 data = data.result;
-                for(let i=0;i<data.length;i++){
-                    let authorName = data[i]._id;
-                    insertDataToAuthorTable(authorName, i);
+                if(data.length == 0){
+                    $(".alertDiv").html("<strong>Warning!</strong> No users are found");
+                    $(".alertDiv").fadeIn();
+
+                }else {
+                    for(let i=0;i<data.length;i++){
+                        let authorName = data[i]._id;
+                        insertDataToAuthorTable(authorName, i);
+                    }
                 }
-                console.log(data.length);
             });
         }
     });
