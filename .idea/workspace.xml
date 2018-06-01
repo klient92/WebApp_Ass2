@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b22911ca-f21f-4b1a-8a27-a1e0a5f1343f" name="Default" comment="">
+    <list default="true" id="b22911ca-f21f-4b1a-8a27-a1e0a5f1343f" name="Default" comment="Fuzzy search in author section&#10;No users are found hint was added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/authorAnalytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/authorAnalytics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/revision.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/revision.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/author.pug" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/author.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/overall.pug" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/overall.pug" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/author.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/author.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/overall.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/overall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/author.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/author.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,11 +18,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="overall.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="overall.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/overall.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="individual.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/individual.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1514">
+              <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="author.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/author.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overall.pug" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/overall.pug">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="715">
+              <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="author.pug" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/author.pug">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="revision.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/revision.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="843">
+              <caret line="376" column="67" lean-forward="true" selection-start-line="376" selection-start-column="67" selection-end-line="376" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -45,7 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>destroy</find>
       <find>aaaa</find>
       <find>top 3</find>
       <find>get_topn_titles_with_highest_revisions</find>
@@ -74,6 +113,7 @@
       <find>insertDataToTitleTable</find>
       <find>titleTable</find>
       <find>group</find>
+      <find>year</find>
       <find>total_articles</find>
     </findStrings>
   </component>
@@ -106,7 +146,6 @@
         <option value="$PROJECT_DIR$/app/controller/overallAnalytics.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/login.css" />
         <option value="$PROJECT_DIR$/app/views/login.pug" />
-        <option value="$PROJECT_DIR$/app/views/overall.pug" />
         <option value="$PROJECT_DIR$/middleware/index.js" />
         <option value="$PROJECT_DIR$/app/controller/userInfo.js" />
         <option value="$PROJECT_DIR$/app.js" />
@@ -116,10 +155,11 @@
         <option value="$PROJECT_DIR$/app/routes/index.js" />
         <option value="$PROJECT_DIR$/app/controller/authorAnalytics.js" />
         <option value="$PROJECT_DIR$/app/views/layout.pug" />
-        <option value="$PROJECT_DIR$/app/models/revision.js" />
         <option value="$PROJECT_DIR$/app/views/author.pug" />
-        <option value="$PROJECT_DIR$/public/js/author.js" />
         <option value="$PROJECT_DIR$/public/js/overall.js" />
+        <option value="$PROJECT_DIR$/app/models/revision.js" />
+        <option value="$PROJECT_DIR$/app/views/overall.pug" />
+        <option value="$PROJECT_DIR$/public/js/author.js" />
       </list>
     </option>
   </component>
@@ -263,7 +303,7 @@
       <workItem from="1526540730292" duration="1118000" />
       <workItem from="1526876692210" duration="460000" />
       <workItem from="1526898973840" duration="6145000" />
-      <workItem from="1527398543196" duration="95363000" />
+      <workItem from="1527398543196" duration="97544000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1525224594037</created>
@@ -370,11 +410,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527780139692</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fuzzy search in author section">
+      <created>1527846849173</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1527846849173</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fuzzy search in author section&#10;No users are found hint was added">
+      <created>1527847045978</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1527847045978</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228615000" />
+    <option name="totallyTimeSpent" value="230796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,7 +486,9 @@
     <MESSAGE value="fix session problem by set the config of session" />
     <MESSAGE value="Save function and convert string to date" />
     <MESSAGE value="fix author item expansion problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix author item expansion problem" />
+    <MESSAGE value="Fuzzy search in author section" />
+    <MESSAGE value="Fuzzy search in author section&#10;No users are found hint was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fuzzy search in author section&#10;No users are found hint was added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,13 +712,6 @@
     <entry file="file://$PROJECT_DIR$/public/stylesheets/login.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/overall.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/error.pug">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -733,38 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/author.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/author.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="26" column="61" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/individual.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/author.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="11" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/revision.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="239" column="4" lean-forward="true" selection-start-line="239" selection-start-column="4" selection-end-line="239" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -782,10 +803,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/revision.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="376" column="67" lean-forward="true" selection-start-line="376" selection-start-column="67" selection-end-line="376" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/individual.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1514">
+          <caret line="134" lean-forward="true" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/overall.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/overall.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/author.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/author.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>

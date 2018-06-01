@@ -12,12 +12,17 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $("#searchBtn").on('click', function (e) {
-        var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-        var author = $(".authorInput").val();
+        let special_format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        let space_format = /\s+\w+/gi;
+        let author = $(".authorInput").val();
         $('#authorTableBody').empty();
         $("#dataTableBody").empty();
 
-        if(format.test(author) || !author){
+        if(!space_format.test(author)){
+            $(".alertDiv").html("<strong>Warning!</strong> Please input text");
+            $(".alertDiv").fadeIn();
+
+        }else if(special_format.test(author) || !author){
             $(".alertDiv").html("<strong>Warning!</strong> Special characters are not allowed");
             $(".alertDiv").fadeIn();
 
@@ -42,6 +47,8 @@ $(document).ready(function () {
 });
 
 $(document).on('click' ,'.authorRow',function(){
+    $("#authorTableBody").children().removeClass('bg-warning');
+    $(this).addClass("bg-warning");
     let name = $(this).text();
     search_author_name = name;
     $("#dataTableBody").empty();
