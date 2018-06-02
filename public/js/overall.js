@@ -3,7 +3,7 @@ let total_articles = 0;
 $(document).ready(function () {
     $('.overall').addClass('active');
     $('#overPieChart').css("display","none");
-
+    $('.alertDiv').css("display","none");
     $.get( "http://localhost:3000/overall/get_total_articles_number", function(data) {
         total_articles = data.result;
     });
@@ -50,27 +50,38 @@ $(document).ready(function() {
     $("#topn-revision-input").on("change", function() {
         empty_element("#topn-high-revision");
         empty_element("#topn-low-revision");
+
+        let inputNumber = 3;
+
         let inputTopN =  $(this).val();
 
-        if (inputTopN>total_articles){
-            inputTopN = total_articles;
-            $(this).val(total_articles);
+        if(inputTopN.includes(".")){
+            $(".alertDiv").fadeIn();
+        }else if(inputTopN.includes('-')){
+            $(".alertDiv").fadeIn();
+        }else if(parseInt(inputTopN)>99){
+            $(".alertDiv").fadeIn();
+        }else if(inputTopN==""){
+            $(".alertDiv").fadeIn();
+        }else if(parseInt(inputTopN)<1){
+            $(".alertDiv").fadeIn();
+        }else{
+            inputNumber = parseInt(inputTopN);
+            $(this).val(inputNumber);
+            $(".alertDiv").fadeOut();
+        }
 
-        }
-        if(inputTopN<0){
-            $(this).val(1);
-            inputTopN = 1;
-        }
+        $(this).val(inputNumber)
 
-        if(inputTopN==""){
-            $(this).val(3);
-            inputTopN = 3;
-        }
-        get_topn_titles_with_highest_revisions("#topn-high-revision", "-1", inputTopN);
-        get_topn_titles_with_highest_revisions("#topn-low-revision", "1", inputTopN);
+        get_topn_titles_with_highest_revisions("#topn-high-revision", "-1", inputNumber);
+        get_topn_titles_with_highest_revisions("#topn-low-revision", "1", inputNumber);
     });
 
 });
+
+function alertFadeOut(){
+    $(".alertDiv").fadeOut();
+}
 
 function addBar(){
 
