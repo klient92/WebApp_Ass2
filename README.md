@@ -1,4 +1,5 @@
-##Instructions to run the app:
+Instructions to run the app
+===========================
 
 * Delete all the hidden files and irrelative files under revisions folder
 * Run the process.js file under the public-data folder
