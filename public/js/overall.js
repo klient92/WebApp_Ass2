@@ -44,6 +44,11 @@ $(document).ready(function(){
 
 })
 
+$(document).ready(function() {
+    $(".alertDiv").on("click", function() {
+        $(".alertDiv").fadeOut();
+    });
+});
 
 $(document).ready(function() {
 
