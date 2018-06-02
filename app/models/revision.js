@@ -6,12 +6,13 @@ var https = require('https');
 var Editor = require('./editor');
 
 var RevisionSchema = new mongoose.Schema({
-    revid: String,
+    revid: {type:Number, index:true},
     parentid: Number,
     title: String,
     timestamp: Date,
     user: String,
     role: String,
+    anon: String,
 
 });
 
@@ -322,10 +323,13 @@ function fetchAndSaveRevisionData(url, title, callback){
             datajson = datajson[Object.keys(datajson)[0]];
             datajson = datajson['revisions'];
 
+            //let bulk = Revision.collection.initializeUnorderedBulkOp();
+            //console.log('------------------------------------------');
             for(let i = 0; i<datajson.length; i++){
                 datajson[i]['title'] = title;
                 var user = datajson[i]['user'];
                 Editor.find({name:user},(err,res)=>{
+
                     if(res.length !=0 ) {
                         datajson[i]['role'] = res[0].role;
                     }
@@ -334,13 +338,28 @@ function fetchAndSaveRevisionData(url, title, callback){
                     }else {
                         datajson[i]['role'] = "rgl";
                     }
-                datajson[i]['timestamp'] = new Date(datajson[i]['timestamp']);
-            var query = {revid:datajson[i]['revid']},
-                options = { upsert: true, new: true, setDefaultsOnInsert: true };
-            Revision.findOneAndUpdate(query, datajson[i], options, function(error, result) {
 
-            });
-                })
+                    datajson[i]['timestamp'] = new Date(datajson[i]['timestamp']);
+                    delete datajson[i]["userid"];
+
+                    var query = {revid:datajson[i]['revid']},
+
+                    options = { upsert: true, new: true, setDefaultsOnInsert: true };
+                    //console.log(datajson[i]);
+                    Revision.findOneAndUpdate(query, datajson[i], options, function(error, result) {
+
+                    });
+                    // bulk.find(query).upsert().updateOne(
+                    //     {
+                    //         $setOnInsert: datajson[i],
+                    //     }
+                    // );
+                    //
+                    // if(i==datajson.length-1){
+                    //     console.log('aaaaaa' + i);
+                    //     bulkUpdate(bulk);
+                    // }
+                });
             }
 
             var inform = {};
@@ -356,6 +375,19 @@ function fetchAndSaveRevisionData(url, title, callback){
     });
 
 }
+
+
+// function bulkUpdate(bulk){
+//     bulk.execute((err, res)=>{
+//         if(err){
+//             console.log(err);
+//         }else {
+//             console.log(res.toJSON());
+//         }
+//     });
+// }
+
+
 
 RevisionSchema.statics.getTopNUserbyRevision = function(title, acd, topN, callback){
     Revision.aggregate([
@@ -528,6 +560,6 @@ RevisionSchema.statics.getRevisionNumberByTitle = function (title, callback) {
     });
 }
 
-
+// RevisionSchema.index({ revid: 1});
 var Revision = mongoose.model("Revision", RevisionSchema);
 module.exports = Revision;
