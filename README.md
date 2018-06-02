@@ -9,7 +9,8 @@ Warning! The files under revisions folder has been already processed, if new dat
  ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json; done
 1. Open the setrole.js file and make sure that line 34 was commented and run it.
 1. Open the setrole.js file and make sure that line 33 was uncommented and line 34 was commented and then run it.
-1. run the app.js and wait for several seconds until the "Bulk update role: rgl finished"
+1. Open config.json file under root folder, set "firstLoad" to "0".
+1. run the app.js and wait for several seconds until the "Bulk update role: rgl finished".
 
 Warning! If no new data set is needed. Please follow the steps below.
 ---------
@@ -17,4 +18,5 @@ Warning! If no new data set is needed. Please follow the steps below.
  ls -1 *.json | while read jsonfile; do mongoimport -h localhost -d wikilatic -c revisions --file $jsonfile --jsonArray --type json; done
 1. Open the setrole.js file and make sure that line 34 was commented and run it.
 1. Open the setrole.js file and make sure that line 33 was uncommented and line 34 was commented and then run it.
-1. run the app.js and wait for several seconds until the "Bulk update role: rgl finished"
+1. Open config.json file under root folder, set "firstLoad" to "0".
+1. run the app.js and wait for several seconds until the "Bulk update role: rgl finished".
