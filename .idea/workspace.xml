@@ -48,8 +48,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="30">
-                <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <first_editor relative-caret-position="210">
+                <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               </first_editor>
               <second_editor />
             </state>
@@ -297,7 +297,7 @@
       <workItem from="1526876692210" duration="460000" />
       <workItem from="1526898973840" duration="6145000" />
       <workItem from="1527398543196" duration="108282000" />
-      <workItem from="1527927387559" duration="383000" />
+      <workItem from="1527927387559" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1525224594037</created>
@@ -467,11 +467,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527927649086</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="update README">
+      <created>1527927854545</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1527927854545</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update README">
+      <created>1527928766881</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1527928766881</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241917000" />
+    <option name="totallyTimeSpent" value="243046000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -899,8 +913,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="30">
-            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           </first_editor>
           <second_editor />
         </state>
