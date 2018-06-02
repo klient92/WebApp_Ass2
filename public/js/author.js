@@ -13,12 +13,12 @@ $(document).ready(function () {
 
     $("#searchBtn").on('click', function (e) {
         let special_format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-        let space_format = /\s+\w+/gi;
+        //let space_format = /\s+\w+/gi;
         let author = $(".authorInput").val();
         $('#authorTableBody').empty();
         $("#dataTableBody").empty();
 
-        if(!space_format.test(author)){
+        if(!$.trim(author)){
             $(".alertDiv").html("<strong>Warning!</strong> Please input text");
             $(".alertDiv").fadeIn();
 
