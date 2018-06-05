@@ -2,10 +2,12 @@ let total_articles = 0;
 
 $(document).ready(function () {
     $('.overall').addClass('active');
-    $('#overPieChart').css("display","none");
-    $('.alertDiv').css("display","none");
-    $.get( "http://localhost:3000/overall/get_total_articles_number", function(data) {
+    $('#overPieChart').css("display", "none");
+    $('.alertDiv').css("display", "none");
+    $.get("http://localhost:3000/overall/get_total_articles_number", function (data) {
         total_articles = data.result;
+        console.log(total_articles);
+        $(".alertDiv").html("<strong>Warning!</strong> Please input integer greater than 0 and less than " + total_articles);
     });
 });
 
@@ -64,7 +66,7 @@ $(document).ready(function() {
             $(".alertDiv").fadeIn();
         }else if(inputTopN.includes('-')){
             $(".alertDiv").fadeIn();
-        }else if(parseInt(inputTopN)>99){
+        }else if(parseInt(inputTopN)>total_articles){
             $(".alertDiv").fadeIn();
         }else if(inputTopN==""){
             $(".alertDiv").fadeIn();
@@ -288,16 +290,16 @@ function get_topn_titles_rank_by_group(field_id, acd, topn){
 
 }
 
-function get_topn_articles_with_longest_or_shortest_history(field_id, acd, topn){
+function get_topn_articles_with_longest_or_shortest_history(field_id, acd, topn) {
 
-    $.get( "http://localhost:3000/overall/top-n-article-with-lors-history", {acd:acd, topn:topn}, function( data ) {
+    $.get("http://localhost:3000/overall/top-n-article-with-lors-history", {acd: acd, topn: topn}, function (data) {
         var data = data.result;
 
-        for (var i =0 ;i<data.length;i++) {
+        for (var i = 0; i < data.length; i++) {
             var title = data[i]._id;
-            var duration = Math.round(data[i].duration/1000/60/60/24*100)/100;
+            var duration = Math.round(data[i].duration / 1000 / 60 / 60 / 24 * 100) / 100;
             var row = $('<tr></tr>');
-            var th = $('<th scope="row"></th>').text(i+1);
+            var th = $('<th scope="row"></th>').text(i + 1);
             var td_title = $('<td></td>').text(title);
             var td_total = $('<td></td>').text(duration + " days");
             row.append(th);
